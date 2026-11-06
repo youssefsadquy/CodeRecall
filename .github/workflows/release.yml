@@ -1,0 +1,64 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Publish Windows build
+    runs-on: windows-latest
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '6.0.x'
+
+      - name: Check JavaScript syntax
+        shell: pwsh
+        run: |
+          Get-ChildItem assets -Filter '*.js' | ForEach-Object {
+            node --check $_.FullName
+            if ($LASTEXITCODE -ne 0) { throw "Syntax error in $($_.Name)" }
+          }
+
+      - name: Publish single file
+        run: .\scripts\build.ps1 -Configuration Release -Runtime win-x64 -Output publish
+
+      - name: Write checksums
+        shell: pwsh
+        run: |
+          $hash = (Get-FileHash publish\CodeRecall.exe -Algorithm SHA256).Hash.ToLower()
+          "$hash  CodeRecall.exe" | Set-Content -Encoding ascii publish\SHA256SUMS.txt
+          Get-Content publish\SHA256SUMS.txt
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: CodeRecall-win-x64
+          path: |
+            publish/CodeRecall.exe
+            publish/SHA256SUMS.txt
+          if-no-files-found: error
+
+      - name: Create GitHub release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            publish/CodeRecall.exe
+            publish/SHA256SUMS.txt
+          generate_release_notes: true
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,51 @@
+name: Feature request
+description: Suggest a focused improvement to CodeRecall.
+title: "[Feature]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        CodeRecall is deliberately small and offline-first. Explain the problem before the solution.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      description: Who is affected, and when does it hurt?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behaviour
+      description: What should the app do differently? Include edge cases and what should stay unchanged.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Personal plan / wizard
+        - Study / scheduling
+        - Library / cards
+        - Progress
+        - AI tutor
+        - Settings / data
+        - Accessibility
+        - Build or release
+        - Other
+    validations:
+      required: true
+  - type: checkboxes
+    id: constraints
+    attributes:
+      label: Project constraints
+      options:
+        - label: This can work without an account, telemetry, or a required network connection.
+          required: true
+        - label: I searched existing issues and discussions.
+          required: true

@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build and check
+    runs-on: windows-latest
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '6.0.x'
+
+      - name: Check JavaScript syntax
+        shell: pwsh
+        run: |
+          $failed = $false
+          Get-ChildItem assets -Filter '*.js' | ForEach-Object {
+            node --check $_.FullName
+            if ($LASTEXITCODE -ne 0) {
+              Write-Error "Syntax error in $($_.Name)"
+              $failed = $true
+            }
+          }
+          if ($failed) { exit 1 }
+
+      - name: Restore
+        run: dotnet restore CodeRecall.csproj
+
+      - name: Build
+        run: dotnet build CodeRecall.csproj -c Release --no-restore
+
+      - name: Publish single file
+        run: .\scripts\build.ps1 -Configuration Release -Runtime win-x64 -Output publish
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: CodeRecall-win-x64
+          path: publish/CodeRecall.exe
+          if-no-files-found: error

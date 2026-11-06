@@ -1,0 +1,79 @@
+name: Bug report
+description: Something is broken or looks wrong in CodeRecall.
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve CodeRecall. Please search existing issues first.
+        Do **not** include API keys, personal backups, or other secrets.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear description of the bug and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open ...
+        2. Choose ...
+        3. See ...
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Today
+        - Study / scheduling
+        - Library / cards
+        - Progress
+        - AI tutor
+        - Settings / data
+        - Setup wizard / tour
+        - Build or installer
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: CodeRecall version
+      description: Shown in Settings, or use the release tag.
+      placeholder: 1.0.0
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Windows version
+      placeholder: Windows 11 24H2
+    validations:
+      required: true
+  - type: dropdown
+    id: plan
+    attributes:
+      label: Does it happen with a focused plan or the full library?
+      options:
+        - Focused plan (some decks hidden)
+        - Full library
+        - Not sure
+  - type: textarea
+    id: extras
+    attributes:
+      label: Screenshots or logs
+      description: Drag images here. Remove personal data first. Native logs are in %LOCALAPPDATA%\CodeRecall\error.log.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I searched existing issues.
+          required: true
+        - label: I removed keys and personal data from anything I attached.
+          required: true

@@ -1,0 +1,41 @@
+# Build output
+[Bb]in/
+[Oo]bj/
+[Pp]ublish/
+artifacts/
+*.user
+*.suo
+
+# Visual Studio / Rider / VS Code
+.vs/
+.idea/
+.vscode/
+*.sln.docstates
+*.DotSettings.user
+
+# .NET
+*.dll
+*.pdb
+*.xml
+!assets/*.xml
+*.nupkg
+*.snupkg
+project.lock.json
+project.fragment.lock.json
+
+# Node (preview tooling)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# OS junk
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Local data and secrets
+*.secret
+secrets.dat
+state.json
+coderecall-backup-*.json
+*.log

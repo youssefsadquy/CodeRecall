@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>CodeRecall</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <header class="titlebar" id="titlebar">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"><span>&lt;/&gt;</span></div>
+      <div class="brand-text">
+        <span class="brand-name">CodeRecall</span>
+        <span class="brand-tag">relearn faster</span>
+      </div>
+    </div>
+    <div class="title-mid" id="titleMid"></div>
+    <div class="win-controls">
+      <button class="win-btn" data-win="min" title="Minimize" aria-label="Minimize">
+        <svg viewBox="0 0 12 12"><path d="M2 6h8"/></svg>
+      </button>
+      <button class="win-btn" data-win="max" title="Maximize" aria-label="Maximize">
+        <svg viewBox="0 0 12 12"><rect x="2.5" y="2.5" width="7" height="7" rx="1"/></svg>
+      </button>
+      <button class="win-btn close" data-win="close" title="Close" aria-label="Close">
+        <svg viewBox="0 0 12 12"><path d="M3 3l6 6M9 3l-6 6"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="shell">
+    <aside class="sidebar">
+      <nav class="nav" id="nav">
+        <button class="nav-item" data-page="today">
+          <svg viewBox="0 0 24 24"><path d="M3 10.7 12 3l9 7.7V20a1 1 0 0 1-1 1h-5.2v-6.5H9.2V21H4a1 1 0 0 1-1-1z"/></svg>
+          <span>Today</span><em class="nav-badge" data-badge="today"></em>
+        </button>
+        <button class="nav-item" data-page="study">
+          <svg viewBox="0 0 24 24"><path d="M12 2 22 7.5 12 13 2 7.5z"/><path d="m2 12.5 10 5.5 10-5.5"/><path d="m2 17 10 5.5L22 17"/></svg>
+          <span>Study</span><em class="nav-badge" data-badge="study"></em>
+        </button>
+        <button class="nav-item" data-page="library">
+          <svg viewBox="0 0 24 24"><path d="M4 4h5a3 3 0 0 1 3 3v14a2.4 2.4 0 0 0-2.4-2.4H4z"/><path d="M20 4h-5a3 3 0 0 0-3 3v14a2.4 2.4 0 0 1 2.4-2.4H20z"/></svg>
+          <span>Library</span>
+        </button>
+        <button class="nav-item" data-page="stats">
+          <svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-6M22 20H2"/></svg>
+          <span>Progress</span>
+        </button>
+        <button class="nav-item" data-page="ai">
+          <svg viewBox="0 0 24 24"><path d="M12 3l1.7 4.3L18 9l-4.3 1.7L12 15l-1.7-4.3L6 9l4.3-1.7z"/><path d="M18.5 14.5l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z"/><path d="M5 15l.7 1.6 1.6.7-1.6.7L5 20l-.7-1.7-1.6-.7 1.6-.7z"/></svg>
+          <span>AI Tutor</span>
+        </button>
+        <button class="nav-item" data-page="settings">
+          <svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2.2"/><circle cx="8" cy="17" r="2.2"/></svg>
+          <span>Settings</span>
+        </button>
+      </nav>
+
+      <div class="side-spacer"></div>
+
+      <div class="sidebar-card" id="sideProgress"></div>
+
+      <div class="side-foot">
+        <span class="dot" id="aiDot"></span>
+        <span id="aiStatus">Offline ready</span>
+        <button class="icon-btn tiny" data-action="shortcuts" title="Keyboard shortcuts (?)">?</button>
+      </div>
+    </aside>
+
+    <main class="main" id="main">
+      <div class="boot">
+        <div class="boot-mark">&lt;/&gt;</div>
+        <div class="boot-text">Loading your decks…</div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<div id="modalRoot"></div>
+<div id="toastRoot"></div>
+
+<script src="data-decks.js"></script>
+<script src="data-js.js"></script>
+<script src="data-py.js"></script>
+<script src="data-jvm.js"></script>
+<script src="data-core.js"></script>
+<script src="data-dsa.js"></script>
+<script src="data-sys.js"></script>
+<script src="data-web.js"></script>
+<script src="data-tool.js"></script>
+<script src="core.js"></script>
+<script src="ui-today.js"></script>
+<script src="ui-study.js"></script>
+<script src="ui-library.js"></script>
+<script src="ui-stats.js"></script>
+<script src="ui-ai.js"></script>
+<script src="ui-settings.js"></script>
+<script src="ui-profile.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
