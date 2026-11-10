@@ -12,6 +12,8 @@ Offline-first spaced repetition for software engineers returning to code.
 
 <br />
 
+[![CI](https://github.com/youssefsadquy/CodeRecall/actions/workflows/ci.yml/badge.svg)](https://github.com/youssefsadquy/CodeRecall/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/youssefsadquy/CodeRecall?style=flat-square&color=7CF2C0)](https://github.com/youssefsadquy/CodeRecall/releases/latest)
 ![Windows 10/11](https://img.shields.io/badge/Windows-10%2F11-0078D6?style=flat-square&logo=windows&logoColor=white)
 ![.NET 6](https://img.shields.io/badge/.NET-6.0-512BD4?style=flat-square&logo=dotnet&logoColor=white)
 ![WebView2](https://img.shields.io/badge/WebView2-Evergreen-0078D6?style=flat-square&logo=microsoftedge&logoColor=white)
