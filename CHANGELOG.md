@@ -31,7 +31,7 @@ All notable changes to CodeRecall are documented here. The format follows [Keep 
 - Tour tooltip placement now moves below or above wide targets instead of overlapping them.
 - Wizard focus order now matches the recommendation order described in the analysis text.
 
-## [0.9.0] - 2026-10-20
+## 0.9.0 - 2026-10-20
 
 ### Added
 
@@ -44,4 +44,3 @@ All notable changes to CodeRecall are documented here. The format follows [Keep 
 
 [Unreleased]: ../../compare/v1.0.0...HEAD
 [1.0.0]: ../../releases/tag/v1.0.0
-[0.9.0]: ../../releases/tag/v0.9.0
